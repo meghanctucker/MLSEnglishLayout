@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MLS Assessment Boilerplate</title>
+    <!--Google fonts Inclusive Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    
+    <!--Homebrew Styles-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+    <!--Header-->
+    <div id="testHeader" class="header">
+        <!--logo-->
+        <img alt="MLS Logo" src="img/MLS_Logo_NoBG.png" height="120px"/>
+        <!--logo-->
+
+        <!--Controls-->
+        <ul class="flexRow">
+            <li class="" id="xModalButton"><button onClick="modalOpen()" class="squareButton whiteBG">X</button></li>
+
+        </ul>
+        <!--Controls-->
+
+        <!--Test Info-->
+        <ul class="textRight">
+            <li>Student Name</li>
+            <li>Test Type</li>
+            <li>Language (English)</li>
+        </ul>
+        <!--Test Info-->
+    </div>
+    <!--Header-->
+
+    <!-- Modal div between header and main -->
+    <div id="exitModal" class="fullModal whiteBG hidden">
+        <p>Do you want to exit this test? Your progress will NOT be saved. Proctors please confirm:</p>
+        <div class="rowButtons">
+            <button onClick="mlsRedirect()" class="pillButton primaryBG">Exit</button>
+            <button onClick="modalClose()" class="pillButton primaryBG">Continue</button>
+        </div>
+    </div>
+
+    <!--Main Area-->
+    <div class="main">
+
+        <div class="testArea ">
+            
+            <!--Passage-->
+            <div class="justifyCenter topSpace">
+               <img class="picture" src="img/Strawberry Bear.jpg" alt="picture matching question" height="500px"/>
+               <!--div that holds button together and creates indicator in the background-->
+              <div id="focusOne" class="marginSide indicator">
+                <!--button element that holds variable parts (users need to press this)-->
+                    <button id="audioControl" class="audioButton marginSide">
+                        <!--progress control indicator-->
+                        <div id="audioProgress" class="progressCircle">
+                            <!--play/paus/replay visual indicator-->
+                            <div id="audioVisualIndicator" class="playTriangle">
+                                <!--audio file -->
+                                <audio id="myAudio">
+                                    <!--Audio file source-->
+                                    <source id="audioSource" src="" type="audio/mpeg">
+                                </audio>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <!--Passage-->
+
+            <!--Question area-->
+            <div class="early">
+                <div class="flexRow" style="align-items: center;">
+                    <div id="focusTwo" class="" >
+                        <img  alt="An illustration of a lightbulb turned on. The symbol for practice." src="img/lightbulb.jpg" height="75px"/> 
+                    </div> 
+                    <!--Question-->
+                    <h3>Practice: Choose the phrase that goes along with the picture.</h3>
+                    <!--Question-->
+                </div>
+               
+
+                <!--Answers-->
+                <!--"value" is the info sent to the server: how would like do?-->
+                <div id="answerBloc" class="early" style="margin: 2.5%;">
+                    <input type="radio" id="optionA" name="answer" value="" required/>
+                    <label for="optionA">The bear runs.</label>
+                    
+                    <input type="radio" id="optionB" name="answer" value="" />
+                    <label for="optionB">The bear sits.</label>
+
+                    <input type="radio" id="optionC" name="answer" value="" />
+                    <label for="optionC">The bear walks</label>
+
+                </div>
+                <!--Answers-->
+
+                <!--Next-->
+                <div id="nextIndicator" class=" autoMargin" >
+                    <button id="nextButton" onClick="redirect()"  class="next deactivated alignRight">Next</button>          
+               </div>
+                <!--Next-->
+            </div> 
+            <!--End Question Area-->
+        </div>
+    </div>
+    <!--Main Area-->
+</div>
+    <script>
+
+
+    </script>
+  </body>
+</html>

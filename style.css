@@ -1,0 +1,633 @@
+/*****
+wrapper
+Header
+Main
+*practice
+*testArea
+    *passage
+    *question
+*********/
+
+
+
+.wrapper {
+    display: grid;
+    grid-template-rows: 20% 80%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main {
+    display: grid;
+    grid-template-rows: 15% 85%;
+}
+
+.testArea {
+    display: grid;
+    grid-template-columns: 60% 40%;
+
+}
+
+.justifyCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.picture {
+    border-radius: 25px;
+}
+
+.question {
+    background-image: url("img/Test\ image\ 1000\ x\ 1200\ px\ \(1200\ x\ 1000\ px\).png");
+    background-repeat: no-repeat;
+    margin: 0px 4px;
+    padding: 0px 4px;
+    background-size: contain;
+}
+
+#answerBloc {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 4px;
+    width: 80%;
+}
+
+.alignRight {
+    display: flex;
+    justify-self: right;
+}
+
+.alignCenter {
+    display: flex;
+    justify-self: center;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    list-style-type: none;
+    padding-right: 40px;
+}
+
+.textRight {
+    text-align: right;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.topSpace {
+    margin-top: 5%;
+    padding-top: 5%;
+}
+
+.marginSide {
+    margin: 0 5% 5% 5%;
+    padding: 0 5%;
+}
+
+img {
+    border-radius: 15%;
+}
+
+/******
+Radio button answers
+*******/
+
+input {
+    appearance: none;
+}
+
+label {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px 5px;
+    margin: 10px 0px;
+    text-align: left;
+    background-color: white;
+    box-shadow: 5px 10px 15px black;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+label:hover {
+    box-shadow: 10px 5px 5px black;
+}
+
+input:checked + label {
+        border: 7px solid #218383;
+        box-shadow: none;
+}
+
+/******
+button
+*******/
+
+button {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin: 10px 0px;
+    text-align: left;
+    background-color: lightgreen;
+    box-shadow: 5px 10px 15px black;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.primaryBG{
+    background-color: #66cccc;
+}
+
+.whiteBG {
+    background-color: #FFF;
+}
+
+.pillButton{
+    border: 2px solid black;
+    border-radius: 45%;
+    color: #000;
+    font-family: "Inclusive Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    box-shadow: 5px 10px 15px black;
+    min-width: 75px;
+    min-height: 50px;
+    margin: 20px;
+    padding: 5px;
+    text-align: center;
+    font-size: large;
+}
+
+.squareButton {
+    border: 2px solid black;
+    border-radius: 15%;
+    color: #000;
+    font-family: "Inclusive Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    box-shadow: 5px 10px 15px black;
+    min-width: 50px;
+    min-height: 50px;
+    margin: 20px;
+    padding: 5px;
+    text-align: center;
+    font-size:x-large;
+}
+
+.pillButton:hover, .squareButton:hover, .button:hover {
+    box-shadow: 10px 15px 20px black;
+}
+
+.pillButton:focus, .squareButton:focus, .button:focus {
+    box-shadow: none;
+}
+
+.deactivated {
+    background-color: #B3B3B3;
+    color: #4D4D4D;
+    box-shadow: none;
+    border: none;
+}
+
+/***
+Audio button and controls
+****/
+
+.audioButton {
+    background-color: #fff;
+    min-width: 75px;
+    min-height: 75px;
+}
+
+.playTriangle {
+  width: 0; 
+  height: 0; 
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 20px solid #000;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.pauseBrackets {
+    border-left: 11px solid black;
+    border-right: 11px solid black;
+    border-top: 0px;
+    border-bottom: 0px;
+    height: 35px;
+    width: 10px;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+
+.replayArrow {
+    height: 35px;
+    width: 35px;
+   background-image: url("img/Replay\ \(40\ x\ 40\ px\).png");
+   background-size: 35px;
+   margin-left: 7px;
+    margin-top: 7px; 
+}
+
+.progressCircle {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 7px solid green;
+}
+
+/******
+passage
+*******/
+
+.passage {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px 12px 10px 0px;
+    margin: 0px 16px;
+    text-align: left;
+    background-color: white;
+    box-shadow: 5px 10px 15px black;
+    max-height: 90vh;
+    overflow-y: scroll;
+}
+
+.passage h2 {
+    text-align: center;
+    font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.passage ol li {
+    padding-left: 5%;;
+    margin-bottom: 1em;
+}
+
+.scrollArrow {
+    position: sticky;
+    top: 0;
+}
+
+.scrollArrowDown {
+    position: sticky;
+    bottom: 0;
+}
+
+/****
+fonts - adjust the classes for these
+****/
+/****
+Font info:
+// <weight>: Use a value from 300 to 700
+// <uniquifier>: Use a unique and descriptive class name
+
+.inclusive-sans-<uniquifier> {
+  font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+*******/
+
+h2{
+  font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+li {
+  font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#answerBloc label {
+  font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.early label {
+    font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18pt;
+}
+
+.early h3 {
+    font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20pt; 
+}
+
+.letters label {
+    font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22pt;
+}
+
+.next {
+    font-family: "Inclusive Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16pt; 
+}
+
+p {
+    font-family: "Inclusive Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+/******
+MODAL
+*******/
+
+.fullModal {
+    border: 4px solid black;
+    border-radius: 25%;
+    z-index: 1;
+    font-family: "Inclusive Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  height: 250px;
+  width: 500px;
+  position: fixed;
+  top: 15%;
+  right: 35%;
+  box-shadow: 5px 10px 15px black;
+  display: flex;
+  flex-direction: column;
+}
+
+.fullModal p{
+    text-align: center;
+    margin: 10% 10% 0% 10%;
+    font-size:larger;
+    line-height: 1.25;
+}
+
+.fullModal .rowButtons {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+}
+
+.hidden {
+    display: none;
+}
+
+/*******
+opening bubble / welcome
+********/
+/*** begin original animation code
+.container {
+	position: relative;
+	height: 768px;
+	overflow: hidden;
+}
+
+.openAnimation {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 1px;
+	height: 1px;
+	background: radial-gradient(#FFF, #FFCC99, #ed8013);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	animation: expansion-anim 5s linear 1s;
+}
+
+end original animation styling ******/
+
+
+/* animation */
+/******Begin original animation keyframes
+@keyframes expansion-anim {
+	0% {
+		transform: scale(0);
+	}
+
+    100% {
+        transform: scale(2000);
+        
+    }
+
+/***
+	100% {
+		transform: scale(0);
+	}
+  }  end original bubble animation keyframes***/
+
+
+/********
+Google code for animation bubble
+*********/
+
+/* Center the circle container */
+.circle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Initial background color */
+  }
+  
+  /* Initial circle styling */
+  #circle {
+    width: 10px; /* Initial size */
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(#FFF, #ed8013); /* Circle color */
+    transform-origin: center; /* Important for scaling from the center */
+    position: absolute; /* Needed for the animation */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Further centering */
+    /* initial circle dimensions */
+    opacity: 0; /* initially invisible */
+    transform: scale(1); /* starting scale */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* smooth appearance */
+    z-index: -2;
+  }
+  
+  .circleAnimation {
+    animation: expandCircle 5s ease-in-out forwards;
+  }
+  
+  /* Keyframes for the circle expansion animation */
+  @keyframes expandCircle {
+    0% {
+      opacity: 0; /* initially invisible */
+      transform: scale(0); /* starting scale */
+    }
+    100% {
+      opacity: 1; /* fully visible */
+      transform: scale(200); /* expand */
+    }
+  }
+
+  .circleCloseAnimation {
+    animation: shrinkCircle 5s ease-in-out forwards;
+  }
+
+
+  @keyframes shrinkCircle {
+               0% {
+                    opacity: 1; /* fully visible */
+                  transform: scale(200); /* expanded state */
+               }
+              100% {
+                   opacity: 0; /* fully invisible */
+                    transform: scale(1); /* shrunk state */
+                }
+                }
+/*******
+end google bubble code
+*********/
+
+/******
+Welcome sequence
+*******/
+.openBubble {
+	/*left: 50%;
+	top: 50%;
+	width: 2000px;
+	height: 2000px;
+	background: radial-gradient(#FFF, #FFCC99, #ed8013);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);*/
+    background: radial-gradient(#FFF, #FFCC99, #ed8013) no-repeat fixed center;
+}
+
+
+/*****
+Closing bubble / welcome close
+******/
+/*******
+opening bubble / welcome
+********/
+
+.container {
+	position: relative;
+	height: 768px;
+	overflow: hidden;
+}
+
+.closeAnimation {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 1px;
+	height: 1px;
+	background: radial-gradient(#FFF, #FFCC99, #ed8013);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	animation: expansion-anim-close 5s linear 1s;
+}
+
+/* animation */
+@keyframes expansion-anim-close {
+	0% {
+		transform: scale(2000);
+	}
+
+    100% {
+        transform: scale(0);
+        
+    }
+
+/***
+	100% {
+		transform: scale(0);
+	}
+        ***/
+}
+
+
+
+/*****
+Indicator bubble
+*****/
+
+
+.indicator, .indicator::before {
+    content: " ";
+   /* margin-right: 15px; */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+   /* margin: 0 auto; */
+    transition: all 0.7s;
+   /* background-color: #FF0055; */
+  }
+    
+  
+  .indicator::before {
+    animation: mymove 2s infinite;
+    position: absolute; 
+    background-color: #66cccc;
+    z-index: -1;
+   /* margin-left: -10px; */
+  }
+  
+  @-webkit-keyframes mymove {
+    50%   {
+      transform: scale(2);
+      opacity: 0
+    }
+    100%   {
+      transform: scale(2);
+      opacity: 0
+    }
+  }
+
+
+
+  /*****
+  experimental
+  *****/
+
+  /******
+  Use this for the Next button with the indicator
+  ******/
+  .autoMargin {
+    align-self: flex-end;
+    margin: 0 auto;
+  }

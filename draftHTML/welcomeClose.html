@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MLS Assessment Boilerplate</title>
+    <!--Google fonts Inclusive Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    
+    <!--Homebrew Styles-->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="container">
+   <!-- <div class="wrapper"> -->
+      
+   <!-- <div class="container">-->     
+            <div id="closeAnimationSeq" class="closeAnimation"></div>
+     <!-- </div> -->  
+             
+    <!-- </div> -->
+     <script>
+        //navigates welcome.html to welcomeSeq.html after animation completed
+document.getElementById("closeAnimationSeq").addEventListener("animationend", function() {
+    window.location.href = "Tutorial1.html"; // Replace with your target URL
+});
+     </script>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MLS Assessment welcome audio</title>
+    <!--Google fonts Inclusive Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    
+    <!--Homebrew Styles-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  
+  <body class="">
+    <!--google circle-->
+    
+    
+    
+
+    <div class="wrapper">
+         <!--Header-->
+    <div id="testHeader" class="header hidden">
+        <!--logo-->
+        <img alt="MLS Logo" src="img/MLS_Logo_NoBG.png" height="120px"/>
+        <!--logo-->
+
+        <!--Controls-->
+        <ul class="flexRow">
+            <li class="hidden" id="xModalButton"><button onClick="modalOpen()" class="squareButton whiteBG">X</button></li>
+
+        </ul>
+        <!--Controls-->
+
+        <!--Test Info-->
+        <ul class="textRight">
+            <li>Student Name</li>
+            <li>Test Type</li>
+            <li>Language (English)</li>
+        </ul>
+        <!--Test Info-->
+    </div>
+    <!--Header-->
+
+   
+
+<!-- Modal div between header and main -->
+<div id="exitModal" class="fullModal whiteBG hidden">
+    <p>Do you want to exit this test? Your progress will NOT be saved. Proctors please confirm:</p>
+    <div class="rowButtons">
+        <button onClick="mlsRedirect()" class="pillButton primaryBG">Exit</button>
+        <button onClick="modalClose()" class="pillButton primaryBG">Continue</button>
+    </div>
+</div>
+
+<div id="circle" class="" ></div>
+
+<!--first sequence-->
+<div id="welcomeMessage" class="justifyCenter hidden">
+    <div class="flexColumn">
+        <div class="textCenter topSpace">
+            <h2>Welcome</h2>
+            <h2><strong>Jill Smith</strong> is about to take a</h2>
+            <h2><strong>Reading Comprehension</strong> assessment in</h2>
+            <h2><strong>English</strong></h2>
+        </div>
+       
+        <div class="textCenter">
+            <button class="pillButton primaryBG" onClick="checkAudio()">Yes</button>
+            <button class="pillButton primaryBG">No</button>  
+        </div>
+    </div>
+</div>
+
+    <!--Main Area--> <!--class="justifyCenter"-->
+    <div id="audioCheckMessage" class="testArea hidden">
+        <div class="justifyCenter topSpace">
+            <img alt="an illustration of a student wearing headphones" src="img/earphones on.jpg" height="350px"/>
+            
+            <div class="flexColumn">
+               <h2 style="min-width: 200px" class="marginSide"> Press play &#9654 </h2>
+                <!--div that holds button together and creates indicator in the background-->
+                <div id="focusOne" class="marginSide indicator">
+
+                    <!--button element that holds variable parts (users need to press this)-->
+                    <button id="audioControl" class="audioButton marginSide">
+                        <!--progress control indicator-->
+                        <div id="audioProgress" class="progressCircle">
+                            <!--play/paus/replay visual indicator-->
+                            <div id="audioVisualIndicator" class="playTriangle">
+                                <!--audio file -->
+                                <audio id="myAudio">
+                                    <!--Audio file source-->
+                                    <source src="Audio/RoughWelcomeSample.mp3" type="audio/mpeg">
+                                </audio>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                <h2 id="adjustVolume" class="hidden marginSide">Sound is playing.</h2>  
+            </div>
+            
+        </div>
+
+        <div class="flexColumn early">
+            <div class="textCenter topSpace flexRow">
+                
+               
+                <div id="readyNext" class="hidden justifyCenter flexColumn">
+                    <h2 >Did you hear the audio? If yes, press </h2> 
+                    <div id="focusTwo">
+                        <!--original onclick to redirect to the closing bubble (goes in button tag below) onClick="redirect()"-->
+                        <button class="alignRight next" id="closeBubble" >Next</button>
+                    </div>
+                </div>
+                
+               
+            </div>
+           
+           
+            <div>
+                
+            </div>
+        </div>      
+
+    </div>
+    <!--end Main Area-->
+    </div>
+    <script>
+        //all variables: 
+
+        const testHeader = document.getElementById("testHeader");
+
+        //weclome message div
+        const welcomeMessage = document.getElementById("welcomeMessage");
+
+        const xModalButton = document.getElementById("xModalButton");
+
+        //audio check div
+        const audioCheckMessage = document.getElementById("audioCheckMessage");
+
+        //audioControl - button that holds audio visual indicators/ clickable area
+        const audioControl = document.getElementById("audioControl");
+
+        //audio progress control indicator - this should trigger a CSS animation
+        const audioProgress = document.getElementById("audioProgress");
+
+        //audio play/pause/replay visual indicator: class should get changed based on what action is available next (.playTriangle, .pauseBrackets, .replayArrow)
+        const audioVisualIndicator = document.getElementById("audioVisualIndicator");
+
+        //audio tag, child: source file
+        const myAudio = document.getElementById("myAudio");
+   
+        //element houlding first focus indicator
+        const focusOne = document.getElementById("focusOne");
+
+        //h2 holding volume adjust message
+       const adjustVolume = document.getElementById("adjustVolume");
+
+        //get the "ready next" div for second step
+       const readyNext = document.getElementById("readyNext");
+       //focusTwo, next button
+       const focusTwo = document.getElementById("focusTwo");
+
+        //Google JS for circle animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const circle = document.querySelector('#circle');
+            const closeBubble = document.getElementById('closeBubble');
+            const container = document.querySelector('.circle-container');
+
+            // Start the animation on page load
+            setTimeout(() => {
+             //   circle.style.animation = 'expandCircle 5s ease-in-out forwards';
+             circle.classList.add("circleAnimation");
+            }, 100);
+
+            setTimeout(() => {
+                testHeader.classList.remove("hidden");
+                welcomeMessage.classList.remove("hidden");
+            }, 3000);
+            
+
+            // Button click functionality
+            closeBubble.addEventListener('click', function() {
+                // Trigger the shrink animation
+               // circle.style.animation = 'shrinkCircle 0.5s ease-in-out forwards';
+               circle.classList.remove("circleAnimation");
+               circle.classList.add("circleCloseAnimation");
+               audioCheckMessage.classList.add("hidden");
+               readyNext.classList.add("hidden");
+               xModalButton.classList.add("hidden");
+                // Redirect after a short delay
+                setTimeout(() => {
+                window.location.href = 'Tutorial5.html'; // Replace with the target page
+                }, 5000); // Wait for the shrink animation to complete (0.5s)
+            });
+
+
+            // Keyframes for the shrink animation (reverse of expand)
+  //          const sheet = document.styleSheets[2];
+  //          console.log(sheet);
+  //          sheet.insertRule(`
+  //              @keyframes_shrinkCircle {
+  //             0% {
+  //                 opacity: 1; /* fully visible */
+  //                 transform: scale(2000); /* expanded state */
+  //             }
+  //             100% {
+  //                 opacity: 0; /* fully invisible */
+  //                 transform: scale(1); /* shrunk state */
+  //             }
+  //             }
+  //         `, 0);
+            });
+//End Google circle animation code
+
+
+             //checkAudio: hide the welcome message and show the volume check
+      function checkAudio(){
+        welcomeMessage.classList.add("hidden");
+        audioCheckMessage.classList.remove("hidden");
+        xModalButton.classList.remove("hidden");
+      }
+
+        audioControl.addEventListener('click', togglePlay);
+        // This is for the progress indicator, do this last: myAudio.addEventListener('timeupdate', updatedProgress);
+        myAudio.addEventListener('ended', handleAudioEnded);
+
+        function togglePlay() {
+            if (myAudio.paused || audioVisualIndicator.classList.contains("replayArrow")) {
+                myAudio.play();
+                audioVisualIndicator.classList.remove("replayArrow");
+                audioVisualIndicator.classList.remove("playTriangle");
+                audioVisualIndicator.classList.add("pauseBrackets");
+                focusOne.classList.remove("indicator");
+                adjustVolume.classList.remove("hidden");
+            } else {
+                myAudio.pause();
+                audioVisualIndicator.classList.remove("pauseBrackets");
+                audioVisualIndicator.classList.add("playTriangle");
+                adjustVolume.classList.add("hidden");
+            }
+        }
+
+        function handleAudioEnded() {
+            audioVisualIndicator.classList.remove("playTriangle");
+            audioVisualIndicator.classList.remove("pauseBrackets");
+            audioVisualIndicator.classList.add("replayArrow");
+           // audio.currentTime = 0;
+        }
+
+        //play audio if play button is pressed OR
+            //change to pause button
+            //take indiicator off focusOne the first time a play button is pressed
+
+        //pause audio if pause button is pressed
+
+
+      //if audio ends, show replay button
+        //when audio ends show ready next text and focusTwo indicator
+      
+        //replay audio if replay button is pressed
+      
+        //Removes focus indicator from audio element: This needs to get moved into a different function
+        //function playAudio() { 
+            //playaudio when button is pressed
+            //myAudio.play();
+
+            //take focus indicator off the audio control button
+      //focusOne.classList.remove("indicator");  
+      // }
+
+        //adds the ready text after audio has ended
+        myAudio.addEventListener('ended', function(){
+            //show the ready next div
+            readyNext.classList.remove("hidden");
+            //put the indicator light on the next button: focusTwo
+            focusTwo.classList.add("indicator");
+        })
+
+        //closes the modal
+       function redirect() {
+        window.location.href = "welcomeClose.html";
+       } 
+
+       //scripts for exit modal
+
+       //opens the modal
+        function modalOpen() {
+            const exitModal = document.getElementById("exitModal");
+            exitModal.classList.remove("hidden");
+        }
+
+        //sends user to the mls homepage from modal "save and exit"
+        function mlsRedirect() {
+            window.location.href = "https://mls.slalab.org";
+        }
+
+        //closes the modal if you say "continue"
+        function modalClose() {
+            const exitModal = document.getElementById("exitModal");
+            exitModal.classList.add("hidden");
+        }
+
+    </script>
+
+  </body>
+</html>

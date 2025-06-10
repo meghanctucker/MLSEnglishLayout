@@ -1,0 +1,89 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tutorial introduce next button</title>
+    <!--Google fonts Inclusive Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    
+    <!--Homebrew Styles-->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+    <!--Header-->
+    <div class="header">
+        <!--logo-->
+        <img alt="MLS Logo" src="img/MLS_Logo_NoBG.png" width="180" height="120"/>
+        <!--logo-->
+
+        <!--Controls-->
+        <ul class="flexRow">
+            <li><button>X</button></li>
+        </ul>
+        <!--Controls-->
+
+        <!--Test Info-->
+        <ul class="textRight">
+            <li>Student Name</li>
+            <li>Test Type</li>
+            <li>Language (English)</li>
+        </ul>
+        <!--Test Info-->
+    </div>
+    <!--Header-->
+
+    <!--Main Area-->
+    <div class="main">
+        <!--Practice-->
+        <!--
+               <div class="practice">
+            <p>Practice placeholder</p>
+        </div> 
+        -->
+        <!--Practice-->
+
+        <div class="testArea">
+            
+            <!--Passage-->
+            <div class="justifyCenter">
+               <button>></button>
+            </div>
+            <!--Passage-->
+
+            <!--Question area-->
+            <div class="early">
+                <img alt="An illustration of a lightbulb turned on. The symbol for practice." src="img/lightbulb.jpg" height="125px"/> 
+        
+                <!--Answers-->
+                <!--"value" is the info sent to the server: how would like do?-->
+                <div id="answerBloc" class="early">
+                    <input type="radio" id="optionA" name="answer" value="" required/>
+                    <label for="optionA"></label>
+                    
+                    <input type="radio" id="optionB" name="answer" value="" />
+                    <label for="optionB"></label>
+
+                    <input type="radio" id="optionC" name="answer" value="" />
+                    <label for="optionC"></label>
+
+                    <input type="radio" id="optionD" name="answer" value="" />
+                    <label for="optionD"></label>
+                </div>
+                <!--Answers-->
+
+                <!--Next-->
+                <button class="alignRight next indicator">Next</button>
+                <!--Next-->
+            </div> 
+            <!--End Question Area-->
+        </div>
+    </div>
+    <!--Main Area-->
+</div>
+    <script src="index.js"></script>
+  </body>
+</html>

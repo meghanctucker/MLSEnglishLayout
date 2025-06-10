@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MLS Assessment Boilerplate</title>
+    <!--Google fonts Inclusive Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    
+    <!--Homebrew Styles-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  
+  <body class="openBubble">
+    <div class="wrapper">
+         <!--Header-->
+    <div class="header">
+        <!--logo-->
+        <img alt="MLS Logo" src="img/MLS_Logo_NoBG.png" height="120px"/>
+        <!--logo-->
+
+        <!--Controls-->
+        <ul class="flexRow">
+        </ul>
+        <!--Controls-->
+
+        <!--Test Info-->
+        <ul class="textRight">
+            <li>Student Name</li>
+            <li>Test Type</li>
+            <li>Language (English)</li>
+        </ul>
+        <!--Test Info-->
+    </div>
+    <!--Header-->
+
+    <!--Main Area-->
+    <div class="justifyCenter">
+        <div class="flexColumn">
+            <div class="textCenter topSpace">
+                <h2>Welcome</h2>
+                <h2><strong>Jill Smith</strong> is about to take a</h2>
+                <h2><strong>Reading Comprehension</strong> assessment in</h2>
+                <h2><strong>English</strong></h2>
+            </div>
+           
+            <div class="textCenter">
+                <button class="pillButton primaryBG" onClick="redirect()">Yes</button>
+                <button class="pillButton primaryBG">No</button>  
+            </div>
+        </div>
+        
+              
+
+    </div>
+    <!--Main Area-->
+    </div>
+    <script>
+        //redirect page to welcomeAudio.html
+        function redirect() {
+            window.location.href = "welcomeAudio.html"; // Replace with your target URL
+        }
+
+        </script>
+        
+  </body>
+</html>

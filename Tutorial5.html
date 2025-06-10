@@ -1,0 +1,315 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Comp Lit Tutorial</title>
+   <!--Google fonts Inclusive Sans-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+   
+   <!--Homebrew Styles-->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+   <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+         <!--Header-->
+         <div id="testHeader" class="header">
+            <!--logo-->
+            <img alt="MLS Logo" src="img/MLS_Logo_NoBG.png" height="120px"/>
+            <!--logo-->
+    
+            <!--Controls-->
+            <ul class="flexRow">
+                <li class="" id="xModalButton"><button onClick="modalOpen()" class="squareButton whiteBG">X</button></li>
+    
+            </ul>
+            <!--Controls-->
+    
+            <!--Test Info-->
+            <ul class="textRight">
+                <li>Student Name</li>
+                <li>Test Type</li>
+                <li>Language (English)</li>
+            </ul>
+            <!--Test Info-->
+        </div>
+        <!--Header-->
+
+        <!-- Modal div between header and main -->
+        <div id="exitModal" class="fullModal whiteBG hidden">
+            <p>Do you want to exit this test? Your progress will NOT be saved. Proctors please confirm:</p>
+            <div class="rowButtons">
+                <button onClick="mlsRedirect()" class="pillButton primaryBG">Exit</button>
+                <button onClick="modalClose()" class="pillButton primaryBG">Continue</button>
+            </div>
+        </div>
+
+    <!--Main Area-->
+    <div class="main">
+
+        <div class="testArea">
+            
+            <!--Passage-->
+            <div class="justifyCenter topSpace">
+
+            <img alt="an illustration of a student wearing headphones" src="img/earphones on.jpg" height="350px"/>
+           
+            <!--div that holds button together and creates indicator in the background-->
+              <div id="focusOne" class="marginSide indicator">
+                <!--button element that holds variable parts (users need to press this)-->
+                <button id="audioControl" class="audioButton marginSide">
+                    <!--progress control indicator-->
+                    <div id="audioProgress" class="progressCircle">
+                        <!--play/paus/replay visual indicator-->
+                        <div id="audioVisualIndicator" class="playTriangle">
+                            <!--audio file -->
+                            <audio id="myAudio">
+                                <!--Audio file source-->
+                                <source id="audioSource" src="" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                </button>
+                
+            </div>
+            </div>
+            <!--Passage-->
+
+            <!--Question area-->
+            <div class="early flexColumn">
+                <div id="focusTwo" class="hidden">
+                    <img alt="An illustration of a lightbulb turned on. The symbol for practice." src="img/lightbulb.jpg" height="75px"/> 
+                </div> 
+                <!--Answers-->
+                <!--"value" is the info sent to the server: how would like do?-->
+            
+                <div id="answerBloc" class="early">
+                    <input type="radio" id="optionA" name="answer" value="" required/>
+                    <label for="optionA" style="max-width: fit-content;" class="hidden" ><img src="img/notebook.jpg" alt="First possible answer choice" height="75px"/></label>
+                    
+                    <input type="radio" id="optionB" name="answer" value="" />
+                    <label for="optionB" style="max-width: fit-content;" class="hidden" ><img src="img/pencil.jpg" alt="second possible answer choice" height="75px"/></label>
+
+                    <input type="radio" id="optionC" name="answer" value="" />
+                    <label for="optionC" style="max-width: fit-content;" class="hidden"><img src="img/scissors.jpg" alt="Third answer choice" height="75px"/></label>       
+
+                </div>
+          
+                       <!--Answers-->
+
+                <!--Next-->
+               
+                    <div id="nextIndicator" class="hidden" >
+                        <div>
+                            <button id="nextButton" onClick="redirect()" class="alignRight next hidden deactivated">Next</button>
+                        </div>
+                       
+                    </div>
+                
+                    
+                
+                <!--Next-->
+            </div> 
+            <!--End Question Area-->
+        </div>
+    </div>
+    <!--Main Area-->
+</div>
+<script>
+    //All VARIABLES
+
+//EXIT MODAL VAR  
+    //header X modal button
+    const xModalButton = document.getElementById("xModalButton");
+    //exit modal
+    const exitModal = document.getElementById("exitModal");
+//AUDIO VAR
+    //audioControl - button that holds audio visual indicators/ clickable area
+    const audioControl = document.getElementById("audioControl");
+    //audio progress control indicator - this should trigger a CSS animation
+    const audioProgress = document.getElementById("audioProgress");
+    //audio play/pause/replay visual indicator: class should get changed based on what action is available next (.playTriangle, .pauseBrackets, .replayArrow)
+    const audioVisualIndicator = document.getElementById("audioVisualIndicator");
+    //audio tag, child: source file
+    const myAudio = document.getElementById("myAudio");
+    //Audio Src
+    const audioSource = document.getElementById("audioSource");
+
+
+//EXIT MODAL SCRIPT  
+        //opens the modal
+        function modalOpen() {
+            exitModal.classList.remove("hidden");
+        }
+
+        //sends user to the mls homepage from modal "save and exit"
+        function mlsRedirect() {
+            window.location.href = "https://mls.slalab.org";
+        }
+
+        //closes the modal if you say "continue"
+        function modalClose() {          
+            exitModal.classList.add("hidden");
+        }
+
+    function redirect() {
+	    window.location.href = "Tutorial6.html";
+    }
+//END EXIT MODAL SCRIPT
+
+
+//COMMENTS TO PLAY THE AUDIO INTERACTION SEQUENCE
+//BEGIN AUDIO TRACKS and SEQUENCE THROUGH
+const tracks = [
+        'Audio/Tutorial1.mp3',
+        'Audio/Tutorial2.mp3',
+        'Audio/Tutorial3.mp3',
+        'Audio/Tutorial4.mp3'
+        ];
+
+        let currentTrackIndex = 0;
+        const audio = new Audio();
+
+        function playTrack() {
+        audio.src = tracks[currentTrackIndex];
+        audio.play();
+        //test code:
+        console.log(audio.src);
+     //   audioControl.addEventListener('click', togglePlay);
+      }
+
+        audio.addEventListener('ended', () => {
+        currentTrackIndex++;
+        if (currentTrackIndex < tracks.length) {
+           playTrack();
+           console.log(currentTrackIndex);
+           //start really sloppy indicator codes
+           if (currentTrackIndex === 1) {
+            //show the practice icon
+            const focusTwo = document.getElementById("focusTwo");
+            focusTwo.classList.remove("hidden");
+            //show the indicator behind the practice icon
+         //   focusTwo.classList.add("indicator");
+           } else if (currentTrackIndex === 2) {
+            //take the indicator off the practice icon
+            const focusTwo = document.getElementById("focusTwo");
+            focusTwo.classList.remove("indicator");
+        //show the empty answer buttons
+            const answer1 = document.getElementsByTagName("label")[0];
+            const answer2 = document.getElementsByTagName("label")[1];
+            const answer3 = document.getElementsByTagName("label")[2];
+            answer1.classList.remove("hidden");
+            answer2.classList.remove("hidden");
+            answer3.classList.remove("hidden");
+        //show a DEACTIVATED next button
+        const nextIndicator = document.getElementById("nextIndicator");
+        nextIndicator.classList.remove("hidden");
+        const nextButton = document.getElementById("nextButton");
+            nextButton.classList.remove("hidden");
+        //put the indicator behind the answer buttons
+    //    const answerBloc = document.getElementById("answerBloc");
+    //        answerBloc.classList.add("indicator");
+     //       const optionB = document.getElementById("optionB");
+     //       optionB.classList.add("indicator");
+
+        //play tutorial3
+           } else if (currentTrackIndex === 3) {
+            const answerBloc = document.getElementById("answerBloc");
+            answerBloc.classList.remove("indicator");
+            const nextIndicator = document.getElementById("nextIndicator");
+           nextIndicator.classList.add("indicator");
+            const nextButton = document.getElementById("nextButton");
+            nextButton.classList.remove("deactivated");
+            const optionB = document.getElementById("optionB");
+            optionB.checked = true;
+            
+           }
+        } else {
+            currentTrackIndex = 0; // Optionally loop back to the beginning
+        }
+        });
+
+       // playTrack(); // Start playing the first track
+
+
+    //When a user clicks the audioControl Button
+    audioControl.addEventListener('click', () => { //clear out this event listener after it happens the first time. This should switch to "togglePlay()"
+         //remove the first focus indicator
+         focusOne.classList.remove("indicator");
+        playTrack();
+    });
+
+    //when the tutorial1 track ends
+        //show the practice icon
+        //show the indicator behind the practice icon
+        //play the next track: tutorial2
+    //when tutorial2 track ends
+        //take the indicator off the practice icon
+        //show the empty answer buttons
+        //show a DEACTIVATED next button
+        //put the indicator behind the answer buttons
+        //play tutorial3
+    //When tutorial3 ends
+        //take the indicator off the answer buttons
+        //ACTIVATE the NEXT button
+        //SELECT an answer button
+        //put the indicator on the NEXT button
+        //play tutorial 4
+    //when tutorial4 ends
+        //no answer is selected
+        //next button is deactivated
+        //no indicator lights
+        //show images in the answer boxes
+        //play tutorial 5
+
+
+
+
+
+
+//AUDIO TOGGLE SCRIPT
+
+//        audioControl.addEventListener('click', togglePlay);
+       // audioControl.addEventListener('click', togglePlay);
+        // This is for the progress indicator, do this last: myAudio.addEventListener('timeupdate', updatedProgress);
+//        myAudio.addEventListener('ended', handleAudioEnded);
+
+        function togglePlay() {
+            if (myAudio.paused || audioVisualIndicator.classList.contains("replayArrow")) {
+               //audio.playTrack();
+               audio.play();
+                audioVisualIndicator.classList.remove("replayArrow");
+                audioVisualIndicator.classList.remove("playTriangle");
+                audioVisualIndicator.classList.add("pauseBrackets");
+                focusOne.classList.remove("indicator");
+            } else {
+               // myAudio.pause();
+               audio.pause(); 
+               audioVisualIndicator.classList.remove("pauseBrackets");
+                audioVisualIndicator.classList.add("playTriangle");
+            }
+        }
+
+        function handleAudioEnded() {
+            audioVisualIndicator.classList.remove("playTriangle");
+            audioVisualIndicator.classList.remove("pauseBrackets");
+            audioVisualIndicator.classList.add("replayArrow");
+           // audio.currentTime = 0;
+          // audioSource.src = "Audio/Tutorial2.mp3";
+           console.log(audioSource.src);
+           audioSource.src = "Audio/Tutorial2.mp3";
+           console.log(audioSource.src);
+         //  myAudio.playTrack();
+        }
+
+//END AUDIO TOGGLE SCRIPT
+
+
+</script>
+    
+    
+  </body>
+</html>

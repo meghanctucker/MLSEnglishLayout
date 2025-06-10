@@ -1,0 +1,226 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Comp Lit Tutorial</title>
+   <!--Google fonts Inclusive Sans-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+   
+   <!--Homebrew Styles-->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+   <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+         <!--Header-->
+         <div id="testHeader" class="header">
+            <!--logo-->
+            <img alt="MLS Logo" src="img/MLS_Logo_NoBG.png" height="120px"/>
+            <!--logo-->
+    
+            <!--Controls-->
+            <ul class="flexRow">
+                <li class="" id="xModalButton"><button onClick="modalOpen()" class="squareButton whiteBG">X</button></li>
+    
+            </ul>
+            <!--Controls-->
+    
+            <!--Test Info-->
+            <ul class="textRight">
+                <li>Student Name</li>
+                <li>Test Type</li>
+                <li>Language (English)</li>
+            </ul>
+            <!--Test Info-->
+        </div>
+        <!--Header-->
+
+        <!-- Modal div between header and main -->
+        <div id="exitModal" class="fullModal whiteBG hidden">
+            <p>Do you want to exit this test? Your progress will NOT be saved. Proctors please confirm:</p>
+            <div class="rowButtons">
+                <button onClick="mlsRedirect()" class="pillButton primaryBG">Exit</button>
+                <button onClick="modalClose()" class="pillButton primaryBG">Continue</button>
+            </div>
+        </div>
+
+    <!--Main Area-->
+    <div class="main">
+
+        <div class="testArea" >
+            
+            <!--Passage-->
+            <div class="justifyCenter topSpace">
+
+            <img alt="an illustration of a student wearing headphones" src="img/earphones on.jpg" height="350px"/>
+           
+            <!--div that holds button together and creates indicator in the background-->
+              <div id="focusOne" class="marginSide indicator">
+                <!--button element that holds variable parts (users need to press this)-->
+                    <button id="audioControl" class="audioButton marginSide">
+                        <!--progress control indicator-->
+                        <div id="audioProgress" class="progressCircle">
+                            <!--play/paus/replay visual indicator-->
+                            <div id="audioVisualIndicator" class="playTriangle">
+                                <!--audio file -->
+                                <audio id="myAudio">
+                                    <!--Audio file source-->
+                                    <source id="audioSource" src="" type="audio/mpeg">
+                                </audio>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                
+            </div>
+            <!--Passage-->
+
+            <!--Question area-->
+            <div class="early flexColumn" >
+                <div id="focusTwo" class="" >
+                    <img style="margin: -5% 0 10% 0;" alt="An illustration of a lightbulb turned on. The symbol for practice." src="img/lightbulb.jpg" height="75px"/> 
+                </div> 
+                <!--Answers-->
+                <!--"value" is the info sent to the server: how would like do?-->
+            
+                <div id="answerBloc" class="early">
+                    <input type="radio" id="optionA" name="answer" value="" required/>
+                    <label for="optionA" style="max-width: fit-content;" class="" ><img src="img/notebook.jpg" alt="First possible answer choice" height="75px"/></label>
+                    
+                    <input type="radio" id="optionB" name="answer" value="" />
+                    <label for="optionB" style="max-width: fit-content;" class="" ><img src="img/pencil.jpg" alt="second possible answer choice" height="75px"/></label>
+
+                    <input type="radio" id="optionC" name="answer" value="" />
+                    <label for="optionC" style="max-width: fit-content;" class=""><img src="img/scissors.jpg" alt="Third answer choice" height="75px"/></label>       
+
+                </div>
+          
+                       <!--Answers-->
+
+                <!--Next-->
+               
+                    <div id="nextIndicator" class="autoMargin" >
+                         <button id="nextButton" onClick="redirect()"  class="next deactivated">Next</button>          
+                    </div>
+                
+                    
+                
+                <!--Next-->
+            </div> 
+            <!--End Question Area-->
+        </div>
+    </div>
+    <!--Main Area-->
+</div>
+<script>
+    //All VARIABLES
+
+//EXIT MODAL VAR  
+    //header X modal button
+    const xModalButton = document.getElementById("xModalButton");
+    //exit modal
+    const exitModal = document.getElementById("exitModal");
+
+//AUDIO VAR
+    //audioControl - button that holds audio visual indicators/ clickable area
+    const audioControl = document.getElementById("audioControl");
+    //audio progress control indicator - this should trigger a CSS animation
+    const audioProgress = document.getElementById("audioProgress");
+    //audio play/pause/replay visual indicator: class should get changed based on what action is available next (.playTriangle, .pauseBrackets, .replayArrow)
+    const audioVisualIndicator = document.getElementById("audioVisualIndicator");
+    //audio tag, child: source file
+    const myAudio = document.getElementById("myAudio");
+    //Audio Src
+    const audioSource = document.getElementById("audioSource");
+
+//VARIOUS Elements 
+    const focusOne = document.getElementById("focusOne");
+    const focusTwo = document.getElementById("focusTwo");
+    const answerBloc = document.getElementById("answerBloc");
+    const answer1 = document.getElementsByTagName("label")[0];
+    const answer2 = document.getElementsByTagName("label")[1];
+    const optionB = document.getElementById("optionB");
+    const answer3 = document.getElementsByTagName("label")[2];
+    const nextIndicator = document.getElementById("nextIndicator");
+    const nextButton = document.getElementById("nextButton");
+
+//Audio script
+
+//on click, playTrack function
+audioControl.addEventListener('click', playTrack);
+
+function playTrack(){
+    myAudio.src = 'Audio/Tutorial5.mp3';
+    myAudio.play();
+    focusOne.classList.remove("indicator");
+    audioControl.removeEventListener('click', playTrack);
+    audioControl.addEventListener('click', togglePlay);
+    audioVisualIndicator.classList.remove('playTriangle');
+    audioVisualIndicator.classList.add('pauseBrackets');
+}
+
+function togglePlay() {
+            if (myAudio.paused || audioVisualIndicator.classList.contains("replayArrow")) {
+               //audio.playTrack();
+               myAudio.play();
+                audioVisualIndicator.classList.remove("replayArrow");
+                audioVisualIndicator.classList.remove("playTriangle");
+                audioVisualIndicator.classList.add("pauseBrackets");
+               // focusOne.classList.remove("indicator");
+            } else {
+                myAudio.pause();
+              // audio.pause();
+               audioVisualIndicator.classList.remove("pauseBrackets");
+                audioVisualIndicator.classList.add("playTriangle");
+            }
+        }
+
+myAudio.addEventListener('ended', visualReplayArrow);
+
+function visualReplayArrow() {
+            audioVisualIndicator.classList.remove("playTriangle");
+            audioVisualIndicator.classList.remove("pauseBrackets");
+            audioVisualIndicator.classList.add("replayArrow");
+        }
+
+//Checked radio button activates next button
+document.querySelectorAll('input[name="answer"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    if (this.checked) {
+      nextButton.classList.remove('deactivated');
+      nextIndicator.classList.add('indicator');
+    }
+  });
+});
+
+//EXIT MODAL SCRIPT  
+        //opens the modal
+        function modalOpen() {
+            exitModal.classList.remove("hidden");
+        }
+
+        //sends user to the mls homepage from modal "save and exit"
+        function mlsRedirect() {
+            window.location.href = "https://mls.slalab.org";
+        }
+
+        //closes the modal if you say "continue"
+        function modalClose() {          
+            exitModal.classList.add("hidden");
+        }
+
+//END EXIT MODAL SCRIPT
+
+//NEXT button page redirect
+function redirect() {
+	    window.location.href = "PictureMatch.html";
+    }
+
+</script>
+    
+    
+</body>
+</html>

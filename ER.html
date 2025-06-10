@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MLS Assessment Boilerplate</title>
+    <!--Google fonts Inclusive Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    
+    <!--Homebrew Styles-->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+    <!--Header-->
+    <div class="header">
+        <!--logo-->
+        <img alt="MLS Logo" src="img/MLS_Logo_NoBG.png" width="180" height="120"/>
+        <!--logo-->
+
+        <!--Controls-->
+        <ul class="flexRow">
+            <li><button>></button><audio autoplay><source src="Audio/MLS_Audio_Test.mp3" type="audio/mpeg"> </audio></li>
+            <li><button>?</button></li>
+            <li><button>X</button></li>
+        </ul>
+        <!--Controls-->
+
+        <!--Test Info-->
+        <ul class="textRight">
+            <li>Student Name</li>
+            <li>Test Type</li>
+            <li>Language (English)</li>
+        </ul>
+        <!--Test Info-->
+    </div>
+    <!--Header-->
+
+    <!--Main Area-->
+    <div class="main">
+        <!--Practice-->
+        <!--
+               <div class="practice">
+            <p>Practice placeholder</p>
+        </div> 
+        -->
+        <!--Practice-->
+
+        <div class="testArea">
+            
+            <!--Passage-->
+            <div class="passage">
+                <button class=" scrollArrow">^^</button>
+                <h2>Title of Passage</h2>
+                <ol>
+                    <li>This is a paragraph of lorem ipsum text. I want to write some paragraphs in order to have some filler text on the page. Uusally a paragraph consistst of 3 to 5 sentences. The last sentence in the first paragraph is usually the thesis of the essay.</li>
+                    <li>This is a second paragaph and it will have three sentences. Sometimes you write out a number and sometimes you just use the number. Really I'm just taking time to do this.</li>
+                    <li>I don't know how this is going to look on the page or whether or not an ordered list is the correct way to go here. I guess it's going to take some experimentation.</li>
+                    <li>The dolphins passage is really cool. I like it a lot because it talks about dolphins being friends and I'm pretty excited about that. </li>
+                    <li>This is a paragraph of lorem ipsum text. I want to write some paragraphs in order to have some filler text on the page. Uusally a paragraph consistst of 3 to 5 sentences. The last sentence in the first paragraph is usually the thesis of the essay.</li>
+                    <li>This is a second paragaph and it will have three sentences. Sometimes you write out a number and sometimes you just use the number. Really I'm just taking time to do this.</li>
+                    <li>I don't know how this is going to look on the page or whether or not an ordered list is the correct way to go here. I guess it's going to take some experimentation.</li>
+                    <li>The dolphins passage is really cool. I like it a lot because it talks about dolphins being friends and I'm pretty excited about that. </li>
+                
+                </ol>
+                <button class="alignCenter">View Questions</button>
+                <button class="scrollArrowDown">VV</button>
+            </div>
+            <!--Passage-->
+
+            <!--Question area-->
+            <div class="question">
+                
+                <!--Question-->
+                <h3>If you had to answer a question based on paragraph 3, what would be your answer?</h3>
+                <!--Question-->
+
+                <!--Answers-->
+                <!--"value" is the info sent to the server: how would like do?-->
+                <div id="answerBloc">
+                    <input type="radio" id="optionA" name="answer" value="" required/>
+                    <label for="optionA">This is a possible answer that is one sentence long.</label>
+                    
+                    <input type="radio" id="optionB" name="answer" value="" />
+                    <label for="optionB">This is a possible answer that is also one sentence long but it's the second answer.</label>
+
+                    <input type="radio" id="optionC" name="answer" value="" />
+                    <label for="optionC">I think there are always 3 possible answers. I want to see if there's a difference if this can go onto three lines in case there is a really really long answer that we want to look at for some reason. Lorem ipsum lorem ipsum lorem ipsum.</label>
+                </div>
+                <!--Answers-->
+
+                <!--Next-->
+                <button class="alignRight">Next</button>
+                <!--Next-->
+            </div> 
+            <!--End Question Area-->
+        </div>
+    </div>
+    <!--Main Area-->
+</div>
+    <script src="index.js"></script>
+  </body>
+</html>
